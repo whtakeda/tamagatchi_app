@@ -1,3 +1,3 @@
 # TamaGAtchi
 
-A most entertaining message board
+Way more entertaining than the average message board.
