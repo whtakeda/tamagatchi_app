@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20151031203440) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "tamagatchi_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "admin",           default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end
