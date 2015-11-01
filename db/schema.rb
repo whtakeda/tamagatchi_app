@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20151031235140) do
     t.string   "password_digest"
     t.integer  "tamagatchi_id"
     t.integer  "admin",           default: 0
+    t.string   "reset_pw_url"
+    t.datetime "reset_pw_expire"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
