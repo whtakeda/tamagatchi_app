@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.body = params[:body]
     @message.length = @message.body.length
     @message.user_id = current_user.id
     if @message.save

@@ -10,3 +10,11 @@ body {
 .post-right-col {
   font-size:0.8em;
 }
+
+.right-align {
+  float:right;
+}
+
+.inline-block {
+  display:inline-block;
+}
