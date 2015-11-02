@@ -3,7 +3,8 @@ class TamagatchisController < ApplicationController
 #  before_action :set_tamagatchi, only: [:show, :edit, :update, :destroy]
 
   def index
-  end
+    @messages = Message.all.order(id: :desc)
+   end
 
   def new
   end

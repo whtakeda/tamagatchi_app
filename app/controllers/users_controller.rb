@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  has_many :messages
   before_action :authorize, except: [:index,:show,:create,:new]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

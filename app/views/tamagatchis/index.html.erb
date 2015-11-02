@@ -1,3 +1,39 @@
 <p id="alert"><%= alert %></p>
 
-Tamagatchi home page
+<div class="row">
+  <div class="col-xs-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">TamaGAtchi</h3>
+      </div>
+      <div class="panel-body text-center">
+        <%= image_tag "tamagatchi.png", class:"img-responsive", id:"tamagatchi" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Message Board</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+        <% @messages.each {|message| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-8">
+                <strong><%= link_to message.subject, "" %></strong><br />
+                <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
+              </div>
+              <div class="col-xs-4 post-right-col">
+                <%= message.created_at.strftime("%-m/%-d/%y %l:%M %P") %><br />by
+                <%= message.user.name %><br />
+              </div>
+          </li>
+        <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
