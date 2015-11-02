@@ -4,7 +4,7 @@ class CreateTamagatchis < ActiveRecord::Migration
       t.string :name
       t.integer :level
       t.string :image
-      t.date :last_fed_on
+      t.datetime :last_fed_on
       t.integer :rank
       t.integer :tid
 

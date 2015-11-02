@@ -22,12 +22,13 @@ class UsersController < ApplicationController
   end
 
   def create_tamagatchi
-    t = Tamagatchi.new
-    t.level = 1
-    t.rank = 1
-    t.image = "tamagatchi.png"
-    t.tid = current_user.id
-    t.save
+    @t = Tamagatchi.new
+    @t.level = 1
+    @t.rank = 1
+    @t.image = "tamagatchi.png"
+    @t.last_fed_on = DateTime.now
+    @t.tid = current_user.id
+    @t.save
   end
 
 

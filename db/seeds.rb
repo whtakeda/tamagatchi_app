@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Message.destroy_all
+Tamagatchi.destroy_all
+User.destroy_all
+
 users = [
 {
   name: "Wayne",
@@ -14,15 +18,4 @@ users = [
 }
 ]
 
-User.create users
-
-messages = [
-{
-  user_id:1,
-  subject:"Hello",
-  body:"World",
-  length:5
-}
-]
-
-Message.create messages
+#User.create users

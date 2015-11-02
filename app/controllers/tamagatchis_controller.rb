@@ -4,6 +4,7 @@ class TamagatchisController < ApplicationController
 
   def index
     @messages = Message.all.order(id: :desc)
+    @tamagatchi = Tamagatchi.find_by tid:current_user.id
    end
 
   def new

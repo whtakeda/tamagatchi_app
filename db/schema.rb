@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151102173840) do
     t.string   "name"
     t.integer  "level"
     t.string   "image"
-    t.date     "last_fed_on"
+    t.datetime "last_fed_on"
     t.integer  "rank"
     t.integer  "tid"
     t.datetime "created_at",  null: false

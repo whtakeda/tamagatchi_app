@@ -3,18 +3,24 @@
 <div class="row">
   <!-- tamagaatchi -->
   <div class="col-xs-6">
-    <div class="panel panel-primary">
+    <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">TamaGAtchi</h3>
       </div>
       <div class="panel-body text-center">
         <%= image_tag "tamagatchi.png", class:"img-responsive", id:"tamagatchi" %>
+        <ul class="list-group">
+          <li class="list-group-item">Name: <%= @tamagatchi.name %></li>
+          <li class="list-group-item">Level: <%= @tamagatchi.level %></li>
+          <li class="list-group-item">Rank: <%= @tamagatchi.rank %></li>
+          <li class="list-group-item">Last fed on: <%= @tamagatchi.last_fed_on.strftime("%-m/%-d/%y %l:%M %P") %></li>
+        </ul>
       </div>
     </div>
   </div>
   <!-- message board -->
   <div class="col-xs-6">
-    <div class="panel panel-primary">
+    <div class="panel panel-danger">
       <div class="panel-heading">
         <span class="panel-title">Message Board</span>
         <button type="button" class="btn btn-default btn-sm right-align" data-toggle="modal" data-target="#modal-new">New Post</button>
@@ -97,15 +103,4 @@
 </div>
 
 
-<script type="text/javascript">
-$('#modal-show').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var subject = button.data('subject') // Extract info from data-* attributes
-  var body = button.data('body')
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text(subject)
-  modal.find('.control-label').text(body)
-})
-</script>
+<%= javascript_include_tag "messages" %>
