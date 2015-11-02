@@ -17,5 +17,6 @@ class TamagatchisController < ApplicationController
 
   def destroy
   end
+
 end
 

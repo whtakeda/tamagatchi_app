@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  has_many :messages
   before_action :authorize, except: [:index,:show,:create,:new]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -10,12 +9,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
+      @user.tamagatchi_id = @user.id
+      @user.save
+      create_tamagatchi
+      # on user save, automatically create tamagatchi and assign the user to it
       flash[:notice] = "You have successfully signed up!"
       redirect_to root_path
     else
       render 'new'
     end
   end
+
+  def create_tamagatchi
+    t = Tamagatchi.new
+    t.level = 1
+    t.rank = 1
+    t.image = "tamagatchi.png"
+    t.tid = current_user.id
+    t.save
+  end
+
 
   def new
     @user = User.new

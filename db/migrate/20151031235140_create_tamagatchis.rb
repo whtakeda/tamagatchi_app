@@ -6,6 +6,7 @@ class CreateTamagatchis < ActiveRecord::Migration
       t.string :image
       t.date :last_fed_on
       t.integer :rank
+      t.integer :tid
 
       t.timestamps null: false
     end

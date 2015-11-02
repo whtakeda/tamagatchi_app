@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101233105) do
+ActiveRecord::Schema.define(version: 20151102173840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "keywords", force: :cascade do |t|
+    t.string   "value"
+    t.integer  "rank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string   "subject"
@@ -27,12 +34,20 @@ ActiveRecord::Schema.define(version: 20151101233105) do
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
+  create_table "tamagatchi_ranks", force: :cascade do |t|
+    t.integer  "rank"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tamagatchis", force: :cascade do |t|
     t.string   "name"
     t.integer  "level"
     t.string   "image"
     t.date     "last_fed_on"
     t.integer  "rank"
+    t.integer  "tid"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

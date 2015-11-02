@@ -17,15 +17,15 @@
     <div class="panel panel-primary">
       <div class="panel-heading">
         <span class="panel-title">Message Board</span>
-        <button type="button" class="btn btn-default btn-sm right-align" data-toggle="modal" data-target="#myModal">New Post</button>
+        <button type="button" class="btn btn-default btn-sm right-align" data-toggle="modal" data-target="#modal-new">New Post</button>
       </div>
         <div class="panel-body">
         <ul class="list-group">
-        <% @messages.each {|message| %>
+        <% @messages.limit(5).each {|message| %>
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-8">
-                <strong><%= link_to message.subject, "" %></strong><br />
+                <strong><%= link_to message.subject, "#modal-show",  "data-toggle" => "modal", "data-subject" => message.subject, "data-body" => message.body %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
               <div class="col-xs-4 post-right-col">
@@ -35,15 +35,18 @@
           </li>
         <% } %>
         </ul>
+        <% if @messages.count > 5 %>
+          <%= link_to "Next" "" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
 <!-- modal for new message -->
-<%  @message = Message.new %>
+<% @message = Message.new %>
 <%= form_for @message do |f| %>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="modal-new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -65,9 +68,44 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <div class="actions inline-block"><%= f.submit "Post", class:"btn btn-primary" %></div>
-
       </div>
     </div>
   </div>
 </div>
 <% end %>
+
+<!-- modal for showing existing message -->
+<div class="modal fade" id="modal-show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Post #</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label"></label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$('#modal-show').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var subject = button.data('subject') // Extract info from data-* attributes
+  var body = button.data('body')
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text(subject)
+  modal.find('.control-label').text(body)
+})
+</script>
