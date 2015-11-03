@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new,:create,:destroy]
   resources :tamagatchis, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :messages, only:[:index, :new, :create, :destroy]
+  resources :comments, only:[:index, :new, :create]
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'

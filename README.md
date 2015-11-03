@@ -8,4 +8,4 @@ A little bit of this and a litte bit of that
 - helper method tamagatchi_image in application_controller.rb
 - tamagatchi_path in link_to reset in index.html.erb
 - modal notification when user levels up
-
+- saving comments properly
