@@ -44,7 +44,7 @@ class TamagatchisController < ApplicationController
     redirect_to tamagatchis_path
   end
 
-  def too_hot
+  def too_soon
     @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now
@@ -53,7 +53,7 @@ class TamagatchisController < ApplicationController
     redirect_to tamagatchis_path
   end
 
-  def too_cold
+  def too_long
     @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now - 15000.seconds
