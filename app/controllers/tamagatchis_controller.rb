@@ -3,11 +3,10 @@ class TamagatchisController < ApplicationController
   before_action :set_tamagatchi, only: [:show, :edit, :update, :destroy]
 
   def index
-    @messages = Message.all.order(id: :desc)
+    @messages = Message.all.limit(10).order(is_sticky: :desc, id: :desc)
     @tamagatchi = Tamagatchi.find_by tid:current_user.id
 #    session[:timg] = Tamagatchi.find_by(tid:current_user.tamagatchi_id).image if !session[:timg]
     session[:timg] = TamagatchiRank.find_by(rank:Tamagatchi.find_by(tid:current_user.tamagatchi_id).rank).image
-#binding.pry
    end
 
   def new
@@ -35,12 +34,41 @@ class TamagatchisController < ApplicationController
   end
 
   def reset
-#binding.pry
-    @tamagatchi = Tamagatchi.find(params[:id])
+    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
 
     @tamagatchi.level = 1
     @tamagatchi.rank = 1
+    @tamagatchi.last_fed_on = DateTime.now
     @tamagatchi.save
+    session[:meal] = ""
+    redirect_to tamagatchis_path
+  end
+
+  def too_hot
+    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+
+    @tamagatchi.last_fed_on = DateTime.now
+    @tamagatchi.save
+    session[:meal] = ""
+    redirect_to tamagatchis_path
+  end
+
+  def too_cold
+    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+
+    @tamagatchi.last_fed_on = DateTime.now - 15000.seconds
+    @tamagatchi.save
+    session[:meal] = ""
+    redirect_to tamagatchis_path
+  end
+
+  def just_right
+#    binding.pry
+    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+
+    @tamagatchi.last_fed_on = DateTime.now - 5400.seconds
+    @tamagatchi.save
+    session[:meal] = ""
     redirect_to tamagatchis_path
   end
 

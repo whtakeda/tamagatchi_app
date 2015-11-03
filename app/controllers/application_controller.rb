@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
    # Make the current_user method available to views, not just controllers!
-   helper_method :current_user, :tamagatchi_image
+   helper_method :current_user, :tamagatchi_image, :current_tamagatchi
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   def tamagatchi_image
 #    @tamagatchi_image ||= TamagatchiRank.where("rank=").pluck(:image).pop
+  end
+
+  def current_tamagatchi
+    @current_tamagatchi ||= Tamagatchi.find_by tid: session[:user_id] if session[:user_id]
   end
 
 end

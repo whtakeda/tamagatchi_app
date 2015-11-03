@@ -10,6 +10,7 @@
 #Tamagatchi.destroy_all
 #User.destroy_all
 TamagatchiRank.destroy_all
+Message.destroy_all
 
 users = [
 {
@@ -30,22 +31,22 @@ tamagatchi_ranks = [
   {
     rank:2,
     level: 40,
-    image:"tamagatchi-ezra.png"
+    image:"tamagatchi-cat01.png"
   },
   {
     rank:3,
     level: 60,
-    image:"tamagatchi-dean.png"
+    image:"tamagatchi-cat02.png"
   },
   {
     rank:4,
     level:80,
-    image:"tamagatchi-jim.png"
+    image:"tamagatchi-cat03.png"
   },
   {
     rank:5,
     level:100,
-    image:"tamagatchi-phil.png"
+    image:"tamagatchi-cat04.png"
   }
 ]
 

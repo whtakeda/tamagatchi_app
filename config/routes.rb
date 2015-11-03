@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
   get '/tamagatchis/reset/:id' => 'tamagatchis#reset'
+  get '/tamagatchis/toohot/:id' => 'tamagatchis#too_hot'
+  get '/tamagatchis/toocold/:id' => 'tamagatchis#too_cold'
+  get '/tamagatchis/justright/:id' => 'tamagatchis#just_right'
+  get '/messages/deleteall' => 'messages#delete_all'
 #  get '/resetpw' => 'forgot_password#edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

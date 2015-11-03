@@ -24,16 +24,9 @@ body {
 }
 
 .main-carousel {
-  max-height:250px;
+  height:250px;
   margin:10px auto;
-//  border:1px solid #000000;
   border-radius:20px;
-}
-
-.other-color {
-  background:#3c763d;
-//  background:#f2dede;
-//  background:#DFF0D8;
 }
 
 .jumbotron {
@@ -43,4 +36,11 @@ body {
     height: 100%;
     background-size: cover;
     overflow: hidden;
+    background-color:#ff3600;
+    color:white;
+}
+
+.carousel-border {
+  border:1px solid #000000;
+  border-radius:10px
 }
