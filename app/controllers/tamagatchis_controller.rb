@@ -5,6 +5,7 @@ class TamagatchisController < ApplicationController
   def index
     @messages = Message.all.order(id: :desc)
     @tamagatchi = Tamagatchi.find_by tid:current_user.id
+    session[:timg] = Tamagatchi.find_by(tid:current_user.tamagatchi_id).image if !session[:timg]
    end
 
   def new

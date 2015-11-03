@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151102173840) do
   create_table "tamagatchi_ranks", force: :cascade do |t|
     t.integer  "rank"
     t.string   "image"
+    t.integer  "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

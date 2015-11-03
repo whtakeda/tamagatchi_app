@@ -5,10 +5,14 @@
   <div class="col-xs-6">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h3 class="panel-title">TamaGAtchi</h3>
+        <span class="panel-title">TamaGAtchi</span>
+        <%= link_to "Reset", "", class:"btn btn-default btn-sm right-align" %>
       </div>
       <div class="panel-body text-center">
-        <%= image_tag "tamagatchi.png", class:"img-responsive", id:"tamagatchi" %>
+      <%
+#      binding.pry
+      %>
+        <%= image_tag session[:timg], class:"img-responsive", id:"tamagatchi" %>
         <ul class="list-group">
           <li class="list-group-item">Name: <%= @tamagatchi.name %></li>
           <li class="list-group-item">Level: <%= @tamagatchi.level %></li>
