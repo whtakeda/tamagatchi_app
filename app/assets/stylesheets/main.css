@@ -18,3 +18,29 @@ body {
 .inline-block {
   display:inline-block;
 }
+
+.main-img {
+  width:200px;
+}
+
+.main-carousel {
+  max-height:250px;
+  margin:10px auto;
+//  border:1px solid #000000;
+  border-radius:20px;
+}
+
+.other-color {
+  background:#3c763d;
+//  background:#f2dede;
+//  background:#DFF0D8;
+}
+
+.jumbotron {
+    position: relative;
+    background: #000 url("tamagatchi-040.png") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+}

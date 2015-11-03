@@ -6,7 +6,12 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <span class="panel-title">TamaGAtchi</span>
-        <%= link_to "Reset", "", class:"btn btn-default btn-sm right-align" %>
+<%
+#  binding.pry
+%>
+        <%= link_to "Reset", "/tamagatchis/reset/#{@tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
+        <button type="button" class="btn btn-default btn-sm right-align" data-toggle="modal" data-target="#modal-edit">Edit</button>
+        <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
       </div>
       <div class="panel-body text-center">
       <%
@@ -76,8 +81,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <div class="actions inline-block"><%= f.submit "Post", class:"btn btn-primary" %></div>
+        <div class="actions inline-block"><%= f.submit "Post", class:"btn btn-success" %></div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -106,5 +111,30 @@
   </div>
 </div>
 
+<!-- modal for edit tamagatchi -->
+<%= form_for @tamagatchi do |f| %>
+<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Edit Tamagatchi Profile</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Name</label>
+            <%= f.text_field :name, class:"form-control", value:"#{@tamagatchi.name}" %>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="actions inline-block"><%= f.submit "Save", class:"btn btn-success" %></div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <%= javascript_include_tag "messages" %>

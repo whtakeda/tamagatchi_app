@@ -14,12 +14,7 @@ class MessagesController < ApplicationController
     if @message.save
       # after message is saved, update the tamagatchi
       @t = Tamagatchi.find_by tid: current_user.id
-      @t.level +=  @message.length
-      # check if tamagatchi moves up a rank after updating level
-      @r = TamagatchiRank.where("level <=#{@t.level}").maximum(:rank)
-#binding.pry
-      @t.rank = @r if @r > @t.rank
-      @t.last_fed_on = DateTime.now
+      @t.update_tamagatchi @message
       @t.save
 
       session[:timg] = TamagatchiRank.where("rank=#{@t.rank}").pluck(:image).pop
