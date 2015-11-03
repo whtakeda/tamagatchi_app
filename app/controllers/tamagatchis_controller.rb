@@ -34,8 +34,8 @@ class TamagatchisController < ApplicationController
   end
 
   def reset
-    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
-
+    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
+#binding.pry
     @tamagatchi.level = 1
     @tamagatchi.rank = 1
     @tamagatchi.last_fed_on = DateTime.now
@@ -45,7 +45,7 @@ class TamagatchisController < ApplicationController
   end
 
   def too_hot
-    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now
     @tamagatchi.save
@@ -54,7 +54,7 @@ class TamagatchisController < ApplicationController
   end
 
   def too_cold
-    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now - 15000.seconds
     @tamagatchi.save
@@ -64,7 +64,7 @@ class TamagatchisController < ApplicationController
 
   def just_right
 #    binding.pry
-    @tamagatchi = Tamagatchi.find_by tid:params[:id].to_i
+    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now - 5400.seconds
     @tamagatchi.save

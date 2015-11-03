@@ -41,7 +41,7 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-8">
-                <strong><%= link_to message.subject, "#modal-show",  "data-toggle" => "modal", "data-subject" => message.subject, "data-body" => message.body %></strong><br />
+                <strong><%= link_to message.subject, "#modal-show",  "data-toggle" => "modal", "data-subject" => message.subject, "data-body" => message.body, "data-id" => message.id %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
               <div class="col-xs-4 post-right-col">
@@ -103,11 +103,9 @@
         <h4 class="modal-title" id="exampleModalLabel">Post #</h4>
       </div>
       <div class="modal-body">
-        <form>
           <div class="form-group">
             <label for="recipient-name" class="control-label"></label>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
