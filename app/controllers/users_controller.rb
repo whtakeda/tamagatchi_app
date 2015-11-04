@@ -18,16 +18,14 @@ class UsersController < ApplicationController
       session[:error_messages] = ""
       redirect_to root_path
     else
-#      binding.pry
         @str = ""
         if @user.errors.any?
           @user.errors.full_messages.each {|message|
-#binding.pry
             @str = @str + message + "<br />"
           }
           session[:error_messages] = @str
         end
-      redirect_to root_path(signup: "failed")
+      redirect_to root_path(signup: "failed"), alert: @user.errors.full_messages
 #      render 'new'
     end
   end
@@ -56,7 +54,11 @@ class UsersController < ApplicationController
           format.html { redirect_to tamagatchis_path, alert: 'Profile was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
-          format.html { redirect_to tamagatchis_path, alert: @user.errors.full_messages }
+          if (params[:user][:password])
+            format.html { redirect_to tamagatchis_path(changepw:"failed"), alert: @user.errors.full_messages }
+          else
+            format.html { redirect_to tamagatchis_path(editprofile:"failed"), alert: @user.errors.full_messages }
+          end
 #          format.html { render :edit }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end

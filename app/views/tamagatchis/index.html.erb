@@ -1,5 +1,6 @@
+<!--
 <p id="alert"><%= alert %></p>
-
+-->
 <div class="row">
   <!-- tamagaatchi -->
   <div class="col-xs-6">
@@ -182,7 +183,13 @@
       </div>
       <div class="modal-body">
         <form>
-          <p id="signup-alert"><%= error_messages %></p>
+        <% #binding.pry %>
+          <p class="alert">
+          <% if !alert.nil? %>
+              <% alert.each do |a| %>
+              <%= a %>
+              <% end %>
+          <% end %>
           <div class="form-group">
             <label for="email" class="control-label">Name</label>
             <%= f.text_field :name, class:"form-control" %>
@@ -210,11 +217,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+        <h4 class="modal-title">Change Password</h4>
       </div>
       <div class="modal-body">
         <form>
-          <p id="login-alert"><%= error_messages %></p>
+          <p class="alert">
+          <% if !alert.nil? %>
+              <% alert.each do |a| %>
+              <%= a %>
+              <% end %>
+          <% end %>
+          </p>
           <div class="form-group">
             <label for="password" class="control-label">Password</label>
             <%= f.password_field :password, class:"form-control" %>
@@ -234,6 +247,42 @@
 </div>
 <% end %>
 
+<script type="text/javascript">
+      function getQueryVariable(variable)
+      {
+             var query = window.location.search.substring(1);
+             var vars = query.split("&");
+             for (var i=0;i<vars.length;i++) {
+                     var pair = vars[i].split("=");
+                     if(pair[0] == variable){return pair[1];}
+             }
+             return(false);
+      }
+
+    $(document).ready(function(){
+      if (getQueryVariable("changepw") == "failed")
+      {
+          $("#modal-change-pw").modal('show');
+      }
+
+      if (getQueryVariable("editprofile") == "failed")
+      {
+          $("#modal-edit-profile").modal('show');
+      }
+
+    });
+
+    $('#modal-edit-profile').on('hidden.bs.modal', function() {
+        $(".alert").html('')
+//      $("#alert-edit-profile").html('')
+//      $("#alert-change-pw").html('')
+    })
+
+    $('#modal-change-pw').on('hidden.bs.modal', function() {
+      $("#alert-edit-profile").html('')
+      $("#alert-change-pw").html('')
+    })
+</script>
 
 <%= javascript_include_tag "messages" %>
 <%= javascript_include_tag "comments" %>

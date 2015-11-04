@@ -23,8 +23,4 @@ class ApplicationController < ActionController::Base
     @current_tamagatchi ||= Tamagatchi.find_by tid: session[:user_id] if session[:user_id]
   end
 
-  def error_messages
-      @errors ||= session[:error_messages]
-  end
-
 end
