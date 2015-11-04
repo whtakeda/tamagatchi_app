@@ -188,22 +188,8 @@
       </div>
       <div class="modal-body">
         <form>
-        <% #binding.pry %>
-          <span class="alert">
-          <% if !alert.nil? %>
-              <% alert.each do |a| %>
-              <%= a %><br />
-              <% end %>
-          <% end %>
-          </span>
-          <div class="form-group">
-            <label for="name" class="control-label">Name</label>
-            <%= f.text_field :name, class:"form-control" %>
-          </div>
-          <div class="form-group">
-            <label for="email" class="control-label">Email</label>
-            <%= f.text_field :email, class:"form-control" %>
-          </div>
+          <%= render 'shared/alert' %>
+          <%= render 'shared/profile', f: f %>
         </form>
       </div>
       <div class="modal-footer">
@@ -228,21 +214,8 @@
       </div>
       <div class="modal-body">
         <form>
-          <span class="alert">
-          <% if !alert.nil? %>
-              <% alert.each do |a| %>
-              <%= a %><br />
-              <% end %>
-          <% end %>
-          </span>
-          <div class="form-group">
-            <label for="password" class="control-label">Password</label>
-            <%= f.password_field :password, class:"form-control" %>
-          </div>
-          <div class="form-group">
-            <label for="password-confirmation" class="control-label">Password Confirmation</label>
-            <%= f.password_field :password_confirmation, class:"form-control" %>
-          </div>
+          <%= render 'shared/alert' %>
+          <%= render 'shared/password', f: f %>
         </form>
       </div>
       <div class="modal-footer">
