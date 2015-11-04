@@ -7,6 +7,10 @@ class TamagatchisController < ApplicationController
     @tamagatchi = Tamagatchi.find_by tid:current_user.id
 #    session[:timg] = Tamagatchi.find_by(tid:current_user.tamagatchi_id).image if !session[:timg]
     session[:timg] = TamagatchiRank.find_by(rank:Tamagatchi.find_by(tid:current_user.tamagatchi_id).rank).image
+    @limit = 5
+    @offset = 0
+#binding.pry
+    @offset = params[:offset].to_i if params[:offset]
    end
 
   def new

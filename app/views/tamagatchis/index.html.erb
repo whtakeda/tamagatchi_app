@@ -37,11 +37,18 @@
       </div>
         <div class="panel-body">
         <ul class="list-group">
-        <% @messages.each {|message| %>
+        <% @messages.limit(@limit).offset(@offset).each {|message| %>
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-8">
-                <strong><%= link_to message.subject, "#modal-show",  "data-toggle" => "modal", "data-subject" => message.subject, "data-body" => message.body, "data-id" => message.id %></strong><br />
+                <%
+                  if message.is_sticky
+                %>
+                 <span class="glyphicon glyphicon-star-empty"></span>
+               <%
+                  end
+                %>
+                <strong><%= link_to message.subject, "#modal-show",  data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id } %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
               <div class="col-xs-4 post-right-col">
@@ -51,9 +58,18 @@
           </li>
         <% } %>
         </ul>
-        <% if @messages.count > 5 %>
-          <%= link_to "Next" "" %>
-        <% end %>
+        <div class="row">
+          <div class="col-xs-4"></div>
+          <div class="col-xs-4 text-center">
+            <% if @offset > 0 %>
+              <%= link_to "Prev", tamagatchis_path(offset:"#{@offset-5}"), class:"text-left" %>
+            <% end %>
+            <% if @limit+@offset < Message.count %>
+              <%= link_to "Next", tamagatchis_path(offset:"#{@offset+5}"), class:"text-right" %>
+            <% end %>
+          </div>
+          <div class="col-xs-4"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -112,7 +128,8 @@
 
           <div class="form-group">
             <label for="comment">Add a comment</label>
-            <%= f.text_area :body, class:"form-control" %>
+            <%= f.text_field :body, class:"form-control" %>
+<% #binding.pry %>
           </div>
         </form>
       </div>
@@ -144,7 +161,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <div class="actions inline-block"><%= f.submit "Save", class:"btn btn-success" %></div>
+        <div class="actions inline-block"><%= f.submit "Save", class:"btn btn-success"%></div>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
@@ -153,3 +170,4 @@
 <% end %>
 
 <%= javascript_include_tag "messages" %>
+<%= javascript_include_tag "comments" %>
