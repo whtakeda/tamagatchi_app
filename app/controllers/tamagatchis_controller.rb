@@ -25,7 +25,7 @@ class TamagatchisController < ApplicationController
   def update
    respond_to do |format|
         if @tamagatchi.update(tamagatchi_params)
-          format.html { redirect_to tamagatchis_path, alert: 'Profile was successfully updated.' }
+          format.html { redirect_to tamagatchis_path, alert: 'Tamagachi profile was successfully updated.' }
           format.json { render :show, status: :ok, location: @tamagatchi }
         else
           format.html { render :edit }

@@ -8,7 +8,7 @@ class Tamagatchi < ActiveRecord::Base
         @msg = ""
       else
         self.level += m.length/2
-        @msg = "Your TamaGAtchi is famished but you fed it too much too fast so it could only finish half the meal."
+        @msg = "It's been too long since you last fed your TamaGAtchi.  It only eats half the meal before throwing up."
       end
       # check if tamagatchi moves up a rank after updating level
       @r = TamagatchiRank.where("level <=#{self.level}").maximum(:rank)
