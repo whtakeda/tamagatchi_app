@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @t = Tamagatchi.new
     @t.level = 1
     @t.rank = 1
+    @t.name = "Toonces"
     @t.image = "tamagatchi.png"
     @t.last_fed_on = DateTime.now
     @t.tid = current_user.id

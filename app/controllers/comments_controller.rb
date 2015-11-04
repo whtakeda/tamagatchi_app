@@ -18,7 +18,6 @@ class CommentsController < ApplicationController
   private
     # Implement Strong Params
     def comment_params
-#      binding.pry
       params.require(:comment).permit(:body, :user_id, :message_id)
     end
 end
