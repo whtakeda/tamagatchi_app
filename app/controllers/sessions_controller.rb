@@ -3,13 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      session[:error_messages] = ""
       redirect_to tamagatchis_path, notice: 'Logged in!'
     else
       flash.now.alert = 'Invalid login credentials - try again!'
-      render 'new'
+      session[:error_messages] =  "Invalid login credentials - Try again!"
+#      format.html { redirect_to '/', alert: "Error" }
+      redirect_to root_path(login: ""), alert: "Error"
+#      render 'new'
     end
   end
 

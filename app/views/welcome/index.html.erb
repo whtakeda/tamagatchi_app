@@ -1,3 +1,4 @@
+          <p id="alert"><%= error_messages %></p>
 <div class="my-container">
   <div class="jumbotron">
     <div class="row">
@@ -39,4 +40,111 @@
   </div>
 </div>
 
+<!-- modal for signups -->
+<% @user = User.new %>
+<%= form_for @user do |f| %>
+<div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <p id="login-alert"><%= error_messages %></p>
+          <div class="form-group">
+            <label for="email" class="control-label">Name</label>
+            <%= f.text_field :name, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <%= f.text_field :email, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <%= f.password_field :password, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="password-confirmation" class="control-label">Password Confirmation</label>
+            <%= f.password_field :password_confirmation, class:"form-control" %>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="actions inline-block"><%= f.submit "Sign up", class:"btn btn-success" %></div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
+<!-- modal for login -->
+<%= form_tag sessions_path do %>
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <p id="login-alert"><%= error_messages %></p>
+          <div class="form-group">
+            <label for="email" class="control-label">Login</label>
+            <%= text_field_tag :email, params[:email], class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <%= password_field_tag :password, "", class:"form-control" %>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="actions inline-block"><%= submit_tag "Login", class:"btn btn-success" %></div>
+        <div class="actions btn btn-warning inline-block"><%= link_to "Forgot Password", "", class:"no-decoration" %></div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+
+      function getQueryVariable(variable)
+      {
+             var query = window.location.search.substring(1);
+             var vars = query.split("&");
+             for (var i=0;i<vars.length;i++) {
+                     var pair = vars[i].split("=");
+                     if(pair[0] == variable){return pair[1];}
+             }
+             return(false);
+      }
+
+    $('#modal-login').on('shown', function() {
+      if (getQueryVariable("login") == "failed")
+      {
+      }
+      else
+      {
+        $("#login-alert").html = "";
+      }
+    })
+
+    $(document).ready(function(){
+      if (getQueryVariable("login") == "failed")
+      {
+          $("#modal-login").modal('show');
+      }
+
+      if (getQueryVariable("signup") == "failed")
+      {
+        $("#modal-signup").modal('show');
+      }
+    });
+
+</script>

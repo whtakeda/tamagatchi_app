@@ -15,9 +15,20 @@ class UsersController < ApplicationController
       create_tamagatchi
       # on user save, automatically create tamagatchi and assign the user to it
       flash[:notice] = "You have successfully signed up!"
+      session[:error_messages] = ""
       redirect_to root_path
     else
-      render 'new'
+#      binding.pry
+        @str = ""
+        if @user.errors.any?
+          @user.errors.full_messages.each {|message|
+#binding.pry
+            @str = @str + message + "<br />"
+          }
+          session[:error_messages] = @str
+        end
+      redirect_to root_path(signup: "failed")
+#      render 'new'
     end
   end
 
@@ -45,35 +56,15 @@ class UsersController < ApplicationController
           format.html { redirect_to tamagatchis_path, alert: 'Profile was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
-          format.html { render :edit }
+          format.html { redirect_to tamagatchis_path, alert: @user.errors.full_messages }
+#          format.html { render :edit }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
     end
-=begin
-   respond_to do |format|
-      if !params[:changepw]
-        if @user.update(user_params)
-          format.html { redirect_to tamagatchis_path, alert: 'Profile was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      else
-        if @user.update(user_password_params)
-          format.html { redirect_to tamagatchis_path, alert: 'Password was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-#          format.html { redirect_to edit_user_path(current_user, :changepw => true), alert: 'Unabled to update password.' }
-          format.html { render :edit }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-=end
   end
 
   def destroy
+    session.clear
   end
 
   private

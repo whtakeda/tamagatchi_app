@@ -1,4 +1,4 @@
-/*
+
 $('#modal-show').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var subject = button.data('subject') // Extract info from data-* attributes
@@ -9,4 +9,3 @@ $('#modal-show').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text(subject)
 })
-*/

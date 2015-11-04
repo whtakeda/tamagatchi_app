@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
    # Make the current_user method available to views, not just controllers!
-   helper_method :current_user, :tamagatchi_image, :current_tamagatchi
+   helper_method :current_user, :tamagatchi_image, :current_tamagatchi, :error_messages, :clear_errors
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
 
   def current_tamagatchi
     @current_tamagatchi ||= Tamagatchi.find_by tid: session[:user_id] if session[:user_id]
+  end
+
+  def error_messages
+      @errors ||= session[:error_messages]
   end
 
 end
