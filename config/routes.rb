@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :sessions, only: [:new,:create,:destroy]
   resources :tamagatchis, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :messages, only:[:index, :show, :new, :create, :destroy]
+  resources :messages, only:[:index, :show, :new, :create, :update, :destroy]
   resources :comments, only:[:index, :new, :create]
 
   get '/login' => 'sessions#new'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/tamagatchis/toolong/:id' => 'tamagatchis#too_long'
   get '/tamagatchis/justright/:id' => 'tamagatchis#just_right'
   get '/messages/deleteall' => 'messages#delete_all'
+  get '/messages/:id/:dir' => 'messages#update'
 #  get '/resetpw' => 'forgot_password#edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

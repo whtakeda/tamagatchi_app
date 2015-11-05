@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151105035320) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "is_sticky",  default: false
-    t.integer  "score"
+    t.integer  "score",      default: 0
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree

@@ -30,6 +30,24 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+#    binding.pry
+    @m = Message.find params[:id]
+    if params[:dir]  == "upvote"
+      @m.score += 1
+#      binding.pry
+      # update tamagatchi score for user whose post got upvoted
+      ## DO SOMETHING HERE
+      ##########################################################
+      @m.user.tamagatchi.level += 1
+      @m.user.tamagatchi.save
+    elsif params[:dir] == "downvote"
+      @m.score -= 1
+    end
+    @m.save
+    redirect_to tamagatchis_path
+  end
+
   def delete_all
       Message.destroy_all
       redirect_to tamagatchis_path

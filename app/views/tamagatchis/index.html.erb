@@ -60,7 +60,7 @@
                   @comments = @comments + "<hr width='100%'>"
                 %>
                 <strong><%= link_to message.subject, "#modal-show",
-                data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id, comments:@comments } %></strong><br />
+                data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id, comments:@comments, score:message.score } %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
               <div class="col-xs-4 post-right-col">
@@ -152,8 +152,13 @@
 
        <div class="modal-footer">
         <div class="inline-block pull-left">
-          <button type="button" class="btn-default btn-round"><span class="glyphicon glyphicon-thumbs-down"></span></button>
-          <button type="button" class="btn-default btn-round"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+          <%= link_to "", class:"btn btn-default btn-round",id:"downvote" do %>
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+          <% end %>
+          <%= link_to "", class:"btn btn-default btn-round",id:"upvote" do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+          <% end %>
+          <div class="inline-block" id="score"></div>
         </div>
         <div class="actions inline-block"><%= f.submit "Post", class:"btn btn-success" %></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
