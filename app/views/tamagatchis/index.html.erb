@@ -1,37 +1,4 @@
 <div class="row">
-  <!-- tamagatchi -->
-  <!--
-  <div class="col-xs-6">
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <span class="panel-title">TamaGAtchi</span>
-        <%= link_to "Reset", "/tamagatchis/reset/#{@tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
-        <button type="button" class="btn btn-default btn-sm right-align"
-            data-toggle="modal" data-target="#modal-edit">Edit</button>
-        <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
-      </div>
-      <div class="panel-body text-center">
-        <div class="alert">
-        <%
-          if session[:meal]
-        %>
-        <%= session[:meal] %>
-        <%
-          end
-        %>
-        </div>
-        <%= image_tag @tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-warning">Name: <%= @tamagatchi.name %></li>
-          <li class="list-group-item list-group-item">Level: <%= @tamagatchi.level %></li>
-          <li class="list-group-item list-group-item">Rank: <%= @tamagatchi.rank %></li>
-          <li class="list-group-item list-group-item">
-          Last fed on: <%= @tamagatchi.last_fed_on.strftime("%-m/%-d/%y %l:%M %P") %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  -->
   <!-- message board -->
   <div class="col-xs-6">
     <div class="panel panel-primary">
