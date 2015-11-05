@@ -57,3 +57,7 @@ body {
 #mid {
   display:none;
 }
+
+.btn-round{
+  border-radius:50px;
+}

@@ -6,9 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-#binding.pry
     @comment = Message.find(params[:comment][:message_id].to_i).comments.new(comment_params)
-#binding.pry
     @comment.user_id = current_user.id
     if @comment.save
       redirect_to tamagatchis_path

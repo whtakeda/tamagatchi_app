@@ -53,8 +53,9 @@
                 %>
                 <%
                   @comments = ""
-                  message.comments.each do |comment|
-                    @comments = @comments + "<hr width='100%'>#{comment.message.user.name} commented at #{comment.created_at.strftime('%-m/%-d/%y %l:%M %P')}<br />#{comment.body}<br />"
+                  message.comments.order(created_at: :desc).each do |comment|
+                    @comments = @comments + "<hr width='100%'>#{comment.message.user.name} commented at
+                      #{comment.created_at.strftime('%-m/%-d/%y %l:%M %P')}<br />#{comment.body}<br />"
                   end
                   @comments = @comments + "<hr width='100%'>"
                 %>
@@ -150,6 +151,10 @@
       </div>
 
        <div class="modal-footer">
+        <div class="inline-block pull-left">
+          <button type="button" class="btn-default btn-round"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+          <button type="button" class="btn-default btn-round"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+        </div>
         <div class="actions inline-block"><%= f.submit "Post", class:"btn btn-success" %></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
