@@ -48,11 +48,18 @@
                   if message.is_sticky
                 %>
                  <span class="glyphicon glyphicon-star-empty"></span>
-               <%
+                <%
                   end
                 %>
+                <%
+                  @comments = ""
+                  message.comments.each do |comment|
+                    @comments = @comments + "<hr width='100%'>#{comment.message.user.name} commented at #{comment.created_at.strftime('%-m/%-d/%y %l:%M %P')}<br />#{comment.body}<br />"
+                  end
+                  @comments = @comments + "<hr width='100%'>"
+                %>
                 <strong><%= link_to message.subject, "#modal-show",
-                data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id } %></strong><br />
+                data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id, comments:@comments } %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
               <div class="col-xs-4 post-right-col">
