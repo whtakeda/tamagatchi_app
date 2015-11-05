@@ -2,22 +2,15 @@
   <!-- tamagatchi -->
   <div class="col-xs-6">
     <div class="panel panel-success">
-      <div class="panel-heading">
-        <span class="panel-title">TamaGAtchi</span>
-        <%= link_to "Reset", "/tamagatchis/reset/#{current_user.tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
-        <button type="button" class="btn btn-default btn-sm right-align"
+      <div class="panel-heading vertical-center">
+        <span class="panel-title tamagatchi">TamaGAtchi</span>
+        <%= link_to "Reset", "/tamagatchis/reset/#{current_user.tamagatchi.id}",
+            class:"btn btn-default btn-sm right-align centered" %>
+        <button type="button" class="btn btn-default btn-sm right-align centered"
             data-toggle="modal" data-target="#modal-edit">Edit</button>
-        <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
       </div>
       <div class="panel-body text-center">
         <div class="alert">
-        <%
-          if session[:meal]
-        %>
-        <%= session[:meal] %>
-        <%
-          end
-        %>
         <%= notice %><br />
         </div>
         <%= image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
@@ -64,9 +57,15 @@
                 data: { toggle:"modal", subject:message.subject, body: message.body, mid:message.id, comments:@comments, score:message.score } %></strong><br />
                 <%= message.body[0..29] %><%= "..." if message.body.length>30 %>
               </div>
-              <div class="col-xs-4 post-right-col">
+              <div class="col-xs-3 post-right-col">
                 <%= message.created_at.strftime("%-m/%-d/%y %l:%M %P") %><br />by
                 <%= message.user.name %><br />
+              </div>
+              <div class="col-xs-1 post-right-col">
+              <%
+              #link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' }
+              %>
+            <%= link_to raw('<i class="glyphicon glyphicon-remove-sign red"></i>'), message, method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
           </li>
         <% } %>

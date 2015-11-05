@@ -1,6 +1,6 @@
 body {
   padding:10px;
-}
+  }
 
 #tamagatchi {
   max-height:200px;
@@ -39,15 +39,24 @@ body {
 }
 
 .jumbotron {
-    position: relative;
-    background: #000 url("tamagatchi-040.png") center center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-    background-color:#E0E99D;
-    color:#000000;
-    padding:25px;
+  margin:0 auto;
+  position: relative;
+  background: #000 url("tamagatchi-040.png") center center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  background-color:#E0E99D;
+  color:#000000;
+  padding:25px;
+  border-radius:20px;
+  font-family: "Kaushan Script", Arial, sans-serif;
+  font-size:1.2em;
+}
+
+.tamagatchi {
+  font-family: "Kaushan Script", Arial, sans-serif;
+  font-size:1.2em;
 }
 
 .carousel-border {
@@ -66,4 +75,16 @@ body {
 
 .btn-round{
   border-radius:50px;
+}
+
+.rounded {
+  border-radius:10px;
+}
+
+.red {
+  color:#ff0000;
+}
+
+.centered {
+  margin:0 5px;
 }

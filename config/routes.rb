@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root "welcome#index"
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :sessions, only: [:new,:create,:destroy]
-  resources :tamagatchis, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :messages, only:[:index, :show, :new, :create, :update, :destroy]
-  resources :comments, only:[:index, :new, :create]
+  resources :tamagatchis, only: [:index, :new, :create, :edit, :update]
+  resources :messages, only:[:index, :show, :new, :create, :destroy]
+  resources :comments, only:[:index, :new, :create, :destroy]
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'

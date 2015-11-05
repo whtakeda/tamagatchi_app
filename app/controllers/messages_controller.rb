@@ -17,8 +17,6 @@ class MessagesController < ApplicationController
       # try to feed the tamagatchi
       @result = @t.update_tamagatchi @message
       @t.save
-      session[:meal] = ""
-#      session[:meal] = @result
 
       redirect_to tamagatchis_path, notice: @result
     else
@@ -42,6 +40,11 @@ class MessagesController < ApplicationController
   def delete_all
     Message.destroy_all
     redirect_to tamagatchis_path
+  end
+
+  def destroy
+    Message.destroy params[:id]
+      redirect_to tamagatchis_path
   end
 
   private

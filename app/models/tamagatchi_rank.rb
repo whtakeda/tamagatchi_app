@@ -1,3 +1,3 @@
 class TamagatchiRank < ActiveRecord::Base
-  has_many :tamagatchis, :foreign_key => "rank", :primary_key => "rank"
+  has_many :tamagatchis, :foreign_key => "rank", :primary_key => "rank", dependent: :destroy
 end
