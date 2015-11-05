@@ -42,8 +42,6 @@
 
 
 
-
-
 <!-- modal for signups -->
 <% @user = User.new %>
 <%= form_for @user do |f| %>
@@ -137,6 +135,11 @@
       {
         $("#modal-signup").modal('show');
       }
+
+
+    $('.carousel').carousel({
+      interval: 1000
+    })
     });
 
     $('#modal-login').on('hidden.bs.modal', function() {
@@ -146,4 +149,5 @@
     $('#modal-signup').on('hidden.bs.modal', function() {
       $(".alert").html('')
     })
+
 </script>
