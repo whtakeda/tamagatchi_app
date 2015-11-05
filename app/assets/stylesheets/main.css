@@ -53,3 +53,7 @@ body {
   color:#ffffff;
   text-decoration: none;
 }
+
+#mid {
+  display:none;
+}

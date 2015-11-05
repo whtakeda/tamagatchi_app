@@ -9,3 +9,4 @@ A little bit of this and a litte bit of that
 - tamagatchi_path in link_to reset in index.html.erb
 - modal notification when user levels up
 - saving comments properly
+- if user's post gets liked, tamagatchi score goes up

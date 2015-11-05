@@ -4,9 +4,8 @@ class TamagatchisController < ApplicationController
 
   def index
     @messages = Message.all.limit(10).order(is_sticky: :desc, id: :desc)
-    @tamagatchi = Tamagatchi.find_by tid:current_user.id
-#    session[:timg] = Tamagatchi.find_by(tid:current_user.tamagatchi_id).image if !session[:timg]
-    session[:timg] = TamagatchiRank.find_by(rank:Tamagatchi.find_by(tid:current_user.tamagatchi_id).rank).image
+    @tamagatchi = current_user.tamagatchi
+#    session[:timg] = TamagatchiRank.find_by(rank:Tamagatchi.find_by(tid:current_user.tamagatchi_id).rank).image
     @limit = 5
     @offset = 0
 #binding.pry
@@ -25,7 +24,7 @@ class TamagatchisController < ApplicationController
   def update
    respond_to do |format|
         if @tamagatchi.update(tamagatchi_params)
-          format.html { redirect_to tamagatchis_path, alert: 'Tamagachi profile was successfully updated.' }
+          format.html { redirect_to tamagatchis_path, alert: ['Tamagachi profile was successfully updated.'] }
           format.json { render :show, status: :ok, location: @tamagatchi }
         else
           format.html { render :edit }

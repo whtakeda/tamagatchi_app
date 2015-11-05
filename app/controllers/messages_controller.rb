@@ -7,15 +7,16 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+#    binding.pry
+    @message = current_user.messages.new(message_params)
+#    binding.pry
     # only store tweet-length posts for now
     @message.body = params[:body][0..139]
     @message.length = @message.body.length
 #binding.pry
-    @message.user_id = current_user.id
     if @message.save
       # after message is saved, update the tamagatchi
-      @t = Tamagatchi.find_by tid: current_user.id
+      @t = current_user.tamagatchi
       # try to feed the tamagatchi
       @result = @t.update_tamagatchi @message
       @t.save
@@ -37,6 +38,6 @@ class MessagesController < ApplicationController
   private
     # Implement Strong Params
     def message_params
-      params.require(:message).permit(:subject, :body, :is_sticky)
+      params.require(:message).permit(:subject, :body, :is_sticky,:user_id)
     end
 end

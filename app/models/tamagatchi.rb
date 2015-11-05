@@ -1,4 +1,7 @@
 class Tamagatchi < ActiveRecord::Base
+  belongs_to :user
+  has_one :tamagatchi_rank, :foreign_key => "rank", :primary_key => "rank"
+
   def update_tamagatchi m
       @i = DateTime.now.to_i - self.last_fed_on.to_i
       if  @i.between?(0,3599)

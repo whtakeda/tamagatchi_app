@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
  validates :password, length: { minimum: 4 }, allow_nil:true
 
  has_many :messages
+ has_one :tamagatchi
 # after_save :create_tamagatchi
 
 

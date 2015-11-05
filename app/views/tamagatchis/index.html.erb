@@ -10,6 +10,7 @@
         <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
       </div>
       <div class="panel-body text-center">
+        <div class="alert">
         <%
           if session[:meal]
         %>
@@ -17,12 +18,13 @@
         <%
           end
         %>
-        <%= image_tag session[:timg], class:"img-responsive", id:"tamagatchi" %>
+        </div>
+        <%= image_tag @tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
         <ul class="list-group">
           <li class="list-group-item list-group-item-warning">Name: <%= @tamagatchi.name %></li>
-          <li class="list-group-item list-group-item-success">Level: <%= @tamagatchi.level %></li>
-          <li class="list-group-item list-group-item-info">Rank: <%= @tamagatchi.rank %></li>
-          <li class="list-group-item list-group-item-warning">
+          <li class="list-group-item list-group-item">Level: <%= @tamagatchi.level %></li>
+          <li class="list-group-item list-group-item">Rank: <%= @tamagatchi.rank %></li>
+          <li class="list-group-item list-group-item">
           Last fed on: <%= @tamagatchi.last_fed_on.strftime("%-m/%-d/%y %l:%M %P") %></li>
         </ul>
       </div>
@@ -115,9 +117,9 @@
 </div>
 <% end %>
 
-<!-- modal for showing existing message -->
-<% @comment = Comment.new %>
-<%= form_for @comment do |f| %>
+<!-- modal for showing existing message and adding comment -->
+<% @message = Message.new %>
+<%= form_for @message.comments.new do |f| %>
 <div class="modal fade" id="modal-show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,8 +136,9 @@
 
           <div class="form-group">
             <label for="comment">Add a comment</label>
-            <%= f.text_field :body, class:"form-control" %>
+            <%= f.text_area :body, class:"form-control",id:"body" %>
           </div>
+            <%= f.text_area :message_id, class:"form-control",id:"mid" %>
         </form>
       </div>
 
@@ -251,16 +254,21 @@
       }
 
     });
+    $('#modal-show').on('show.bs.modal', function(e) {
+      var bookId = $(e.relatedTarget).data('mid');
+
+      //populate the textbox
+//      $("#hidden").html(bookId);
+    })
+    $('#modal-show').on('hidden.bs.modal', function() {
+    })
 
     $('#modal-edit-profile').on('hidden.bs.modal', function() {
-        $(".alert").html('')
-//      $("#alert-edit-profile").html('')
-//      $("#alert-change-pw").html('')
+      $(".alert").html('')
     })
 
     $('#modal-change-pw').on('hidden.bs.modal', function() {
-      $("#alert-edit-profile").html('')
-      $("#alert-change-pw").html('')
+      $(".alert").html('')
     })
 </script>
 

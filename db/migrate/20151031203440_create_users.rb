@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password_digest
-      t.integer :tamagatchi_id
       t.integer :admin, default:0
       t.string :reset_pw_url
       t.timestamp :reset_pw_expire
