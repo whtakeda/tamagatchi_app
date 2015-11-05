@@ -23,6 +23,11 @@ body {
   display:inline-block;
 }
 
+.shadow {
+  text-shadow: 5px 5px 5px #a0a0a0;
+  width:30%;
+}
+
 .main-img {
   width:200px;
 }
@@ -40,8 +45,9 @@ body {
     height: 100%;
     background-size: cover;
     overflow: hidden;
-    background-color:#ff3600;
-    color:white;
+    background-color:#E0E99D;
+    color:#000000;
+    padding:25px;
 }
 
 .carousel-border {

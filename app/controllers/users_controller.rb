@@ -17,10 +17,10 @@ class UsersController < ApplicationController
       @t.name = "Toonces"
       @t.last_fed_on = DateTime.now
       if @t.save
-       # on user save, automatically create tamagatchi and assign the user to it
-       flash[:notice] = "You have successfully signed up!"
+        flash[:notice] = "You have successfully signed up!"
         redirect_to root_path
       else
+        User.delete @user.id
         redirect_to root_path(signup: "failed"), alert: @t.errors.full_messages
       end
     else
