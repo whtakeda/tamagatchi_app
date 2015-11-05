@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
       redirect_to tamagatchis_path, notice: 'Logged in!'
     else
       flash.now.alert = 'Invalid login credentials - try again!'
-#      format.html { redirect_to '/', alert: "Error" }
       redirect_to root_path(login: "failed"), alert: ['Invalid login credentials - try again!']
+#      format.html { redirect_to '/', alert: "Error" }
 #      render 'new'
     end
   end

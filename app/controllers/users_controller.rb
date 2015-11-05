@@ -34,17 +34,6 @@ class UsersController < ApplicationController
     end
   end
 
-# probably delete this once i finish testing
-  def create_tamagatchi
-    @t = current_user.tamagatchi.new
-    @t.level = 1
-    @t.rank = 1
-    @t.name = "Toonces"
-    @t.last_fed_on = DateTime.now
-    @t.save
-  end
-
-
   def new
     @user = User.new
   end

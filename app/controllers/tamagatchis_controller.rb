@@ -5,7 +5,6 @@ class TamagatchisController < ApplicationController
   def index
     @messages = Message.all.limit(10).order(is_sticky: :desc, id: :desc)
     @tamagatchi = current_user.tamagatchi
-#    session[:timg] = TamagatchiRank.find_by(rank:Tamagatchi.find_by(tid:current_user.tamagatchi_id).rank).image
     @limit = 5
     @offset = 0
 #binding.pry
@@ -38,7 +37,6 @@ class TamagatchisController < ApplicationController
 
   def reset
     @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
-#binding.pry
     @tamagatchi.level = 1
     @tamagatchi.rank = 1
     @tamagatchi.last_fed_on = DateTime.now
@@ -66,7 +64,6 @@ class TamagatchisController < ApplicationController
   end
 
   def just_right
-#    binding.pry
     @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
 
     @tamagatchi.last_fed_on = DateTime.now - 5400.seconds
