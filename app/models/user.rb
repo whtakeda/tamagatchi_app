@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
  has_many :messages
  has_one :tamagatchi
+ has_many :comments
 # after_save :create_tamagatchi
 
 

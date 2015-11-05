@@ -54,7 +54,7 @@
                 <%
                   @comments = ""
                   message.comments.order(created_at: :desc).each do |comment|
-                    @comments = @comments + "<hr width='100%'>#{comment.message.user.name} commented at
+                    @comments = @comments + "<hr width='100%'>#{comment.user.name} commented at
                       #{comment.created_at.strftime('%-m/%-d/%y %l:%M %P')}<br />#{comment.body}<br />"
                   end
                   @comments = @comments + "<hr width='100%'>"

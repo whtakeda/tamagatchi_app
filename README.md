@@ -1,5 +1,7 @@
 # TamaGAtchi
 
+https://blooming-stream-6851.herokuapp.com/
+
 A little bit of this and a litte bit of that
 
 Built using Ruby on Rails with ActiveRecord, Javascript, Bootstrap, HTML, Postgresql
