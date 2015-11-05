@@ -1,4 +1,35 @@
 <div class="row">
+  <!-- tamagatchi -->
+  <div class="col-xs-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <span class="panel-title">TamaGAtchi</span>
+        <%= link_to "Reset", "/tamagatchis/reset/#{@tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
+        <button type="button" class="btn btn-default btn-sm right-align"
+            data-toggle="modal" data-target="#modal-edit">Edit</button>
+        <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
+      </div>
+      <div class="panel-body text-center">
+        <div class="alert">
+        <%
+          if session[:meal]
+        %>
+        <%= session[:meal] %>
+        <%
+          end
+        %>
+        </div>
+        <%= image_tag @tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-warning">Name: <%= @tamagatchi.name %></li>
+          <li class="list-group-item list-group-item">Level: <%= @tamagatchi.level %></li>
+          <li class="list-group-item list-group-item">Rank: <%= @tamagatchi.rank %></li>
+          <li class="list-group-item list-group-item">
+          Last fed on: <%= @tamagatchi.last_fed_on.strftime("%-m/%-d/%y %l:%M %P") %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <!-- message board -->
   <div class="col-xs-6">
     <div class="panel panel-primary">
@@ -136,6 +167,34 @@
   </div>
 </div>
 <% end %>
+
+<!-- modal for edit tamagatchi -->
+<%= form_for @tamagatchi do |f| %>
+<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Edit Tamagatchi Profile</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Name</label>
+            <%= f.text_field :name, class:"form-control", value:"#{@tamagatchi.name}" %>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="actions inline-block"><%= f.submit "Save", class:"btn btn-success"%></div>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <!-- modal for edit profile -->
 <% @user = current_user %>
 <%= form_for @user do |f| %>

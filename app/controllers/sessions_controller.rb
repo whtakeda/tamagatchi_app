@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      session[:error_messages] = ""
       redirect_to tamagatchis_path, notice: 'Logged in!'
     else
       flash.now.alert = 'Invalid login credentials - try again!'

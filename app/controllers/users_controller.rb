@@ -16,19 +16,14 @@ class UsersController < ApplicationController
       @t.rank = 1
       @t.name = "Toonces"
       @t.last_fed_on = DateTime.now
-      @t.save
-      # on user save, automatically create tamagatchi and assign the user to it
-      flash[:notice] = "You have successfully signed up!"
-      session[:error_messages] = ""
-      redirect_to root_path
+      if @t.save
+       # on user save, automatically create tamagatchi and assign the user to it
+       flash[:notice] = "You have successfully signed up!"
+        redirect_to root_path
+      else
+        redirect_to root_path(signup: "failed"), alert: @t.errors.full_messages
+      end
     else
-        @str = ""
-        if @user.errors.any?
-          @user.errors.full_messages.each {|message|
-            @str = @str + message + "<br />"
-          }
-          session[:error_messages] = @str
-        end
       redirect_to root_path(signup: "failed"), alert: @user.errors.full_messages
 #      render 'new'
     end
