@@ -4,7 +4,7 @@ class TamagatchisController < ApplicationController
 
   def index
     @messages = Message.all.limit(10).order(is_sticky: :desc, id: :desc)
-    @tamagatchi = current_user.tamagatchi
+#    @tamagatchi = current_user.tamagatchi
     @limit = 5
     @offset = 0
 #binding.pry
@@ -46,7 +46,8 @@ class TamagatchisController < ApplicationController
   end
 
   def too_soon
-    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
+#    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
+    @tamagatchi = current_user.tamagatchi
 
     @tamagatchi.last_fed_on = DateTime.now
     @tamagatchi.save
@@ -55,7 +56,7 @@ class TamagatchisController < ApplicationController
   end
 
   def too_long
-    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
+    @tamagatchi = current_user.tamagatchi
 
     @tamagatchi.last_fed_on = DateTime.now - 15000.seconds
     @tamagatchi.save
@@ -64,7 +65,7 @@ class TamagatchisController < ApplicationController
   end
 
   def just_right
-    @tamagatchi = Tamagatchi.find_by id:params[:id].to_i
+    @tamagatchi = current_user.tamagatchi
 
     @tamagatchi.last_fed_on = DateTime.now - 5400.seconds
     @tamagatchi.save
@@ -75,7 +76,8 @@ class TamagatchisController < ApplicationController
   private
 
     def set_tamagatchi
-      @tamagatchi = Tamagatchi.find(params[:id])
+#      @tamagatchi = Tamagatchi.find(params[:id])
+      @tamagatchi = current_user.tamagatchi
     end
 
     def tamagatchi_params

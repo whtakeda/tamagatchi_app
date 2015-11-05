@@ -4,7 +4,7 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <span class="panel-title">TamaGAtchi</span>
-        <%= link_to "Reset", "/tamagatchis/reset/#{@tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
+        <%= link_to "Reset", "/tamagatchis/reset/#{current_user.tamagatchi.id}", class:"btn btn-default btn-sm right-align" %>
         <button type="button" class="btn btn-default btn-sm right-align"
             data-toggle="modal" data-target="#modal-edit">Edit</button>
         <%= link_to "Battle", "", class:"btn btn-default btn-sm right-align" %>
@@ -18,6 +18,7 @@
         <%
           end
         %>
+        <%= notice %><br />
         </div>
         <%= image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
         <ul class="list-group">
