@@ -4,8 +4,7 @@
 [TamaGAtchi](https://trello.com/b/KgZCbZaI/wdi-project-2)
 
 ##Description
-It's part entertainment and part message board.  Performing regular message board functions such
-as posting and having your posts upvoted by others will level up your TamaGAtchi.  Eventuall you'll be able to battle other TamaGAtchis, and have new ways to level up as more features are added to the message board.
+It's a bored game, because you really must be bored to play this "game."  Posting to the message board regularly, commenting on other posts and getting people to like your posts will level up your TamaGAtchi.  Battle other players to test your strength and keep yourself mildly amused for 10 seconds.
 
 ##Installation/Getting Started
 No installation is required  Simply browse to the [TamaGAtchi website]
