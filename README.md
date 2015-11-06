@@ -15,10 +15,10 @@ to use.  You will be required to set up a free account on the site to use it.
 
 This game is built using the following technologies
 
--HTML, CSS, and Bootstrap for the GUI
--Javascript and jQuery for some interaction between the GUI and Ruby
--Ruby and Rails for the routing and data logic
--ActiveRecord and Postgresql for the database interaction
+- HTML, CSS, and Bootstrap for the GUI
+- Javascript and jQuery for some interaction between the GUI and Ruby
+- Ruby and Rails for the routing and data logic
+- ActiveRecord and Postgresql for the database interaction
 
 ### [User Stories, ERD, and Wireframing](https://trello.com/b/KgZCbZaI/wdi-project-2)
 
