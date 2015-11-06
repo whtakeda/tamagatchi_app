@@ -13,7 +13,12 @@
         <div class="notice">
         <%= raw(notice) %>
         </div>
-        <%= image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
+
+        <%=
+          #image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi"
+        %>
+
+        <%= link_to image_tag(current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi"), "modal-tamagatchi" %>
         <ul class="list-group">
           <li class="list-group-item list-group-item-success">Name: <%= current_user.tamagatchi.name %></li>
           <li class="list-group-item list-group-item-success">Level: <%= current_user.tamagatchi.level %></li>
@@ -247,6 +252,26 @@
   </div>
 </div>
 <% end %>
+
+
+<!-- modal for tamgatachis -->
+<div class="modal fade" id="modal-tamagatchi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header my-modal-header-sm">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body" id="image-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button-shadow btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <script type="text/javascript">
       function getQueryVariable(variable)

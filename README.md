@@ -1,5 +1,8 @@
 # [TamaGAtchi](https://blooming-stream-6851.herokuapp.com/)
 
+<img src="app/assets/screenshot.png">
+[TamaGAtchi](https://trello.com/b/KgZCbZaI/wdi-project-2)
+
 ##Description
 It's part entertainment and part message board.  Performing regular message board functions such
 as posting and having your posts upvoted by others will level up your TamaGAtchi.  Eventuall you'll be able to battle other TamaGAtchis, and have new ways to level up as more features are added to the message board.
@@ -22,16 +25,14 @@ This game is built using the following technologies
 
 ## Outstanding Issues
 - passing parameters or data to modal for the purpose of viewing or editing a post
-- creating instance of tamagatchi after creating new user
 - tamagatchi_path in link_to reset in index.html.erb
 - cleaning up some routes which are short-cutted
 - (modal) notification when user levels up
-- HOW TO STORE MESSAGE ID IN MODAL????????????????????????????????????????????
-- is there a way to properly decode a param with special characters passed with a direct_to???????????
-- BOOTSTRAP VERSION CONFLICTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- bootstrap version conflicts
 - some error/status messages need to be cleared out after being displayed
 - code needs some serious refactoring
 - partial information is not saved (e.g. name, possibly email) when an invalid signup request occurs
+- some empty views need to be cleaned out
 
 ## Next Steps
 - improved integration between message board and TamaGAtchi leveling, including adding new features to provide additional ways to level up.

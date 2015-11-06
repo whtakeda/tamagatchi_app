@@ -3,12 +3,14 @@ body {
   }
 
 #tamagatchi {
-  max-height:200px;
+  max-height:300px;
   margin:0 auto;
 }
 
 .notice {
-  color:#ff0000;
+  color:#efa0a0;
+  font-size:1.4em;
+  font-weight:bold;
 }
 
 .my-alert {
@@ -65,8 +67,8 @@ body {
 }
 
 .carousel-border {
-  border:1px solid #000000;
-  border-radius:10px
+  border:2px solid #000000;
+  border-radius:10px;
 }
 
 .no-decoration {
