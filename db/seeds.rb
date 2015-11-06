@@ -9,7 +9,7 @@
 #Message.destroy_all
 #Tamagatchi.destroy_all
 User.destroy_all
-TamagatachiRank.destroy_all
+TamagatchiRank.destroy_all
 
 users = [
 {
