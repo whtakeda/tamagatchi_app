@@ -43,7 +43,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    Message.destroy params[:id]
+#    binding.pry
+    Message.destroy params[:confirmid]
       redirect_to tamagatchis_path
   end
 

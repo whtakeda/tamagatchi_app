@@ -68,7 +68,10 @@
               </div>
               <div class="col-xs-1 post-right-col">
                 <% if current_user.id == message.user.id %>
-                  <%= link_to raw('<i class="glyphicon glyphicon-remove-sign delete-glyph"></i>'), message, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%=
+                  #  link_to raw('<i class="glyphicon glyphicon-remove-sign delete-glyph"></i>'), message, method: :delete, data: { confirm: 'Are you sure?' }
+                    link_to raw('<i class="glyphicon glyphicon-remove-sign delete-glyph"></i>'), "#modal-confirm", data: {toggle: "modal",  msg: 'Are you sure?', mid: message.id }
+                  %>
                 <% end %>
               </div>
           </li>
@@ -272,7 +275,28 @@
   </div>
 </div>
 
-
+<!-- modal for confirm -->
+<%= form_tag("messages/1", :method => "delete") do %>
+<div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header my-modal-header-sm">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body" id="confirm-body">
+          <%= render 'shared/alert' %>
+      </div>
+            <%= text_area_tag "confirmid" %>
+      <div class="modal-footer">
+        <div class="actions inline-block"><%= submit_tag "Delete", class:"button-shadow btn btn-primary" %></div>
+        <button type="button" class="button-shadow btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <script type="text/javascript">
       function getQueryVariable(variable)
@@ -309,6 +333,15 @@
 
       //populate the textbox
 //      $("#hidden").html(bookId);
+    })
+
+    $('#modal-confirm').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var body = button.data('msg')
+      var mid = button.data('mid')
+      var modal = $(this)
+      modal.find('#confirm-body').html(body)
+      modal.find('#confirmid').text(mid)
     })
 
     $('#modal-show').on('hidden.bs.modal', function() {
