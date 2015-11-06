@@ -18,7 +18,7 @@
           #image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi"
         %>
 
-        <%= link_to image_tag(current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi"), "modal-tamagatchi" %>
+        <%= image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
         <ul class="list-group">
           <li class="list-group-item list-group-item-success">Name: <%= current_user.tamagatchi.name %></li>
           <li class="list-group-item list-group-item-success">Level: <%= current_user.tamagatchi.level %></li>
