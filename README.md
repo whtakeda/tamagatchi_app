@@ -3,7 +3,7 @@
 https://blooming-stream-6851.herokuapp.com/
 
 ##Description
-It's part entertainment and part message board.  Peforming regular message board functions such
+It's part entertainment and part message board.  Performing regular message board functions such
 as posting and having your posts upvoted by others will level up your TamaGAtchi.  Eventuall you'll be able to battle other TamaGAtchis, and have new ways to level up as more features are added to the message board.
 
 ##Installation/Getting Started
@@ -18,9 +18,10 @@ This game is built using the following technologies
 -HTML, CSS, and Bootstrap for the GUI
 -Javascript and jQuery for some interaction between the GUI and Ruby
 -Ruby and Rails for the routing and data logic
--ActiveRecord and Postgres for the database interaction
+-ActiveRecord and Postgresql for the database interaction
 
-Built using Ruby on Rails with ActiveRecord, Javascript, Bootstrap, HTML, Postgres
+## User Stories, ERD, and Wireframing
+https://trello.com/b/KgZCbZaI/wdi-project-2
 
 ## Outstanding Issues
 - passing parameters or data to modal for the purpose of viewing or editing a post
@@ -33,6 +34,7 @@ Built using Ruby on Rails with ActiveRecord, Javascript, Bootstrap, HTML, Postgr
 - BOOTSTRAP VERSION CONFLICTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 - some error/status messages need to be cleared out after being displayed
 - code needs some serious refactoring
+- partial information is not saved (e.g. name, possibly email) when an invalid signup request occurs
 
 ## Next Steps
 - improved integration between message board and TamaGAtchi leveling, including adding new features to provide additional ways to level up.
