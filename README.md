@@ -23,17 +23,16 @@ This game is built using the following technologies
 ### [User Stories, ERD, and Wireframing](https://trello.com/b/KgZCbZaI/wdi-project-2)
 
 ## Outstanding Issues
-- passing parameters or data to modal for the purpose of viewing or editing a post
-- tamagatchi_path in link_to reset in index.html.erb
-- cleaning up some routes which are short-cutted
+- Passing parameters or data to modal for the purpose of viewing or editing a post
+- Tamagatchi_path in link_to reset in index.html.erb
+- Cleaning up some routes which are short-cutted
 - (modal) notification when user levels up
-- bootstrap version conflicts
-- some error/status messages need to be cleared out after being displayed
-- code needs some serious refactoring
-- partial information is not saved (e.g. name, possibly email) when an invalid signup request occurs
-- some empty views need to be cleaned out
+- Bootstrap version conflicts
+- Some error/status messages need to be cleared out after being displayed
+- Code needs some serious refactoring (including removing some unused actions for non-implemented functionality)
+- Partial information is not saved (e.g. name, possibly email) when an invalid signup request occurs
 
 ## Next Steps
-- improved integration between message board and TamaGAtchi leveling, including adding new features to provide additional ways to level up.
-- better status messages
-- password reset function
+- Improved integration between message board and TamaGAtchi leveling, including adding new features to provide additional ways to level up.
+- Better status messages
+- Password reset function
