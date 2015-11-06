@@ -9,16 +9,16 @@
         <button type="button" class="btn btn-default btn-sm right-align centered"
             data-toggle="modal" data-target="#modal-edit">Edit</button>
       </div>
-      <div class="panel-body text-center">
+      <div class="panel-body text-center tamagatchi-panel">
         <div class="notice">
         <%= raw(notice) %>
         </div>
         <%= image_tag current_user.tamagatchi.tamagatchi_rank.image, class:"img-responsive", id:"tamagatchi" %>
         <ul class="list-group">
-          <li class="list-group-item list-group-item-warning">Name: <%= current_user.tamagatchi.name %></li>
-          <li class="list-group-item list-group-item">Level: <%= current_user.tamagatchi.level %></li>
-          <li class="list-group-item list-group-item">Rank: <%= current_user.tamagatchi.rank %></li>
-          <li class="list-group-item list-group-item">
+          <li class="list-group-item list-group-item-success">Name: <%= current_user.tamagatchi.name %></li>
+          <li class="list-group-item list-group-item-success">Level: <%= current_user.tamagatchi.level %></li>
+          <li class="list-group-item list-group-item-success">Rank: <%= current_user.tamagatchi.rank %></li>
+          <li class="list-group-item list-group-item-success">
           Last fed on: <%= current_user.tamagatchi.last_fed_on.strftime("%-m/%-d/%y %l:%M %P") %></li>
         </ul>
       </div>
@@ -32,7 +32,7 @@
         <button type="button" class="btn btn-default btn-sm right-align"
             data-toggle="modal" data-target="#modal-new">New Post</button>
       </div>
-        <div class="panel-body">
+        <div class="panel-body message-panel">
         <ul class="list-group">
         <% @messages.limit(@limit).offset(@offset).each {|message| %>
           <li class="list-group-item">

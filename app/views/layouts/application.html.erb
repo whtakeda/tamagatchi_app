@@ -18,7 +18,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav class="navbar navbar-inverse rounded">
+<nav class="navbar navbar-custom rounded">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -33,7 +33,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar">
       <li><%= link_to "Home", root_path %></li>
       <% if current_user %>
         <li><%= link_to "Logout", logout_path %></li>
