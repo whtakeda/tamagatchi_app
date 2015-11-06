@@ -8,8 +8,8 @@
 
 #Message.destroy_all
 #Tamagatchi.destroy_all
-#User.destroy_all
-
+User.destroy_all
+TamagatachiRank.destroy_all
 users = [
 {
   name: "Wayne",
