@@ -7,7 +7,7 @@ body {
   margin:0 auto;
 }
 
-.alert{
+.alert, .notice{
   color:#ff0000;
 }
 
@@ -81,10 +81,35 @@ body {
   border-radius:10px;
 }
 
-.red {
+.delete-glyph {
   color:#ff0000;
+  font-size:2em;
+}
+
+.star-glyph {
+  color:#00cf00;
 }
 
 .centered {
   margin:0 5px;
+}
+
+.modal-background {
+ background-color:#e0e0c0;
+}
+
+.button-shadow {
+  box-shadow: 6px 6px 5px #888888;
+}
+
+.my-modal-header-md {
+ background-color:#7C7F10;
+ color:#000000;
+ border-radius:5px 5px 0 0;
+}
+
+.my-modal-header-sm {
+ background-color:#3175B0;
+ color:#ffffff;
+ border-radius:5px 5px 0 0;
 }

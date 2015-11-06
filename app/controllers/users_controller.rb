@@ -39,13 +39,17 @@ class UsersController < ApplicationController
   def update
    respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to tamagatchis_path, alert: ['Profile was successfully updated.'] }
+          if (params[:user][:password])
+            format.html { redirect_to tamagatchis_path(changepw:"1"), alert: ["Password successfully changed"] }
+          else
+            format.html { redirect_to tamagatchis_path(editprofile:"1"), alert: ["Profile successfully updated"] }
+          end
           format.json { render :show, status: :ok, location: @user }
         else
           if (params[:user][:password])
-            format.html { redirect_to tamagatchis_path(changepw:"failed"), alert: @user.errors.full_messages }
+            format.html { redirect_to tamagatchis_path(changepw:"1"), alert: @user.errors.full_messages }
           else
-            format.html { redirect_to tamagatchis_path(editprofile:"failed"), alert: @user.errors.full_messages }
+            format.html { redirect_to tamagatchis_path(editprofile:"1"), alert: @user.errors.full_messages }
           end
 #          format.html { render :edit }
           format.json { render json: @user.errors, status: :unprocessable_entity }
