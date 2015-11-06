@@ -254,15 +254,17 @@
 <% end %>
 
 
-<!-- modal for tamgatachis -->
-<div class="modal fade" id="modal-tamagatchi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<!-- modal for messages -->
+<div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header my-modal-header-sm">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Status</h4>
       </div>
-      <div class="modal-body" id="image-body">
+      <div class="modal-body" id="success-body">
+          <%= render 'shared/alert' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="button-shadow btn btn-default" data-dismiss="modal">Close</button>
@@ -286,32 +288,43 @@
       }
 
     $(document).ready(function(){
-      if (getQueryVariable("changepw"))
+      if (getQueryVariable("failpw"))
       {
           $("#modal-change-pw").modal('show');
       }
 
-      if (getQueryVariable("editprofile"))
+      if (getQueryVariable("failprofile"))
       {
           $("#modal-edit-profile").modal('show');
       }
 
+      if (getQueryVariable("success"))
+      {
+          $("#modal-success").modal('show');
+      }
+
     });
+
     $('#modal-show').on('show.bs.modal', function(e) {
       var bookId = $(e.relatedTarget).data('mid');
 
       //populate the textbox
 //      $("#hidden").html(bookId);
     })
+
     $('#modal-show').on('hidden.bs.modal', function() {
     })
 
     $('#modal-edit-profile').on('hidden.bs.modal', function() {
-      $(".alert").html('')
+      $(".my-alert").html('')
     })
 
     $('#modal-change-pw').on('hidden.bs.modal', function() {
-      $(".alert").html('')
+      $(".my-alert").html('')
+    })
+
+    $('#modal-success').on('hidden.bs.modal', function() {
+      $(".my-alert").html('')
     })
 </script>
 
