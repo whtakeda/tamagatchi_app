@@ -1,4 +1,4 @@
-# [TamaGAtchi](https://blooming-stream-6851.herokuapp.com/)
+# [TamaGAtchi](https://tamagatchi.herokuapp.com/)
 
 <img src="app/assets/screenshot.png">
 [TamaGAtchi](https://trello.com/b/KgZCbZaI/wdi-project-2)
